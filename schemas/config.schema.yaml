@@ -1,0 +1,40 @@
+$schema: "http://json-schema.org/draft-06/schema#"
+
+description: snakemake configuration file
+
+type: object
+
+properties:
+  units:
+    type: string
+  trimming:
+    type: object
+    properties:
+      skip:
+        type: boolean
+      adapter:
+        type: string
+        pattern: "^[ACGT]+$"
+
+  params:
+    type: object
+    properties:
+      star:
+        type: string
+      cutadapt-se:
+        type: string
+      cutadapt-pe:
+        type: string
+      kallisto:
+        type: object
+
+    required:
+      - star
+      - cutadapt-se
+      - cutadapt-pe
+      - kallisto
+
+required:
+  - units
+  - trimming
+  - params
