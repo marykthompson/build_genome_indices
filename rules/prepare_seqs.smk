@@ -58,7 +58,7 @@ rule extract_intron_seqs:
         combo_fasta = 'indices/combo_files/{}_star.fa'.format(config['index_name']),
         combo_gtf = 'indices/combo_files/{}.gtf'.format(config['index_name'])
     params:
-        flanking_nt = 30
+        flanking_nt = config['intron_flanking_nt']
     output:
         intron_fasta = 'indices/combo_files/{}_introns.fa'.format(config['index_name']),
         gffutils_db = 'indices/combo_files/{}.db'.format(config['index_name']),
