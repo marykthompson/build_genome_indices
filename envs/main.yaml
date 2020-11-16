@@ -4,13 +4,8 @@ channels:
   - defaults
 dependencies:
   - python>=3.6
-  - gffutils=0.10.1
   - biopython
-  - samtools
-  - bedtools
-  - deeptools
+  - gffutils=0.10.1
   - star=2.5.3a
-  - pandas=0.25.3
   - kallisto=0.46.2
-  - bioconda::rseqc=3.0
-  - htseq
+  - kb-python

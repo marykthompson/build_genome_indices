@@ -1,12 +1,11 @@
-# Snakemake workflow: foursu_timecourse
+# Snakemake workflow: build_genome_indices
 
-This workflow performs analysis of RNA-Seq data from a 4sU treatment time course,
-where foursu is applied over a window at different points in a stress response.
-First sequences are downloaded, and STAR and Kallisto indices are built.
-Transcript abundance is estimated with Kallisto and then collated to produce gene-level
-abundance estimates. Abundance estimates are fed into the INSPEcT R package to
-estimate synthesis, splicing, and degradation rates. Reads are also aligned with STAR
-and subjected to QC analysis with RSeQC.
+This workflow builds genome indices needed to perform 4sU analysis, which
+includes assigning reads to both intronic and exonic regions.
+performs analysis of RNA-Seq data from a 4sU treatment time course,
+Sequences are downloaded, and STAR and Kallisto indices are built.
+The transcriptome index is built with kb_python https://github.com/pachterlab/kb_python,
+which extracts the introns plus 30 bp of flanking sequence on either side.
 
 The following repository was used as an initial template:
 https://github.com/snakemake-workflows/rna-seq-star-deseq2

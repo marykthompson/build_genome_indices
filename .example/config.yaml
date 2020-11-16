@@ -36,4 +36,6 @@ build_star_params:
 
 #specify the number of flanking nts to add to each side of the intron.
 #Some defaults 30, other source suggests read length - 1:
-intron_flanking_nt: 30
+#not implmented currently because kb python doesn't allow access to this
+#parameter through kb ref
+#intron_flanking_nt: 30
