@@ -54,7 +54,8 @@ rule create_gffutils_db:
         combo_gtf = 'sequences/combo_files/{}.gtf'.format(config['index_name'])
     output:
         gffutils_db = 'sequences/combo_files/{}.db'.format(config['index_name']),
-        rrna_gene_file = 'sequences/rrna/rrna_genes.csv'
+        rrna_gene_file = 'sequences/rrna/rrna_genes.csv',
+        rrna_gene_file_nopg = 'sequences/rrna/rrna_genes_nopg.csv',
     conda:
         '../envs/main.yaml'
     script:
