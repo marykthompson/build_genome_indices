@@ -8,7 +8,7 @@ import subprocess
 from zipfile import ZipFile
 import os
 import shutil
-from urllib.request import Request, urlretrieve, urlopen
+from urllib.request import urlretrieve
 from Bio import SeqIO
 import gffutils
 from Bio.SeqRecord import SeqRecord
@@ -30,6 +30,7 @@ def download_ERCC_info(address, outdir, new_name, subset = set(), starting_nt = 
     outname = os.path.join(outdir, 'erccs')
     download_address = '{}.fasta'.format(outname)
     local_path, headers = urlretrieve(address, download_address)
+
     ercc_features = []
     ercc_records = SeqIO.parse(download_address, 'fasta')
 
@@ -56,11 +57,8 @@ def download_ERCC_info(address, outdir, new_name, subset = set(), starting_nt = 
     return ercc_gtf, ercc_combined_seq
 
 def download_SIRV_info(address, outdir, new_name):
-
-    req = Request(address, headers={'User-Agent': 'Mozilla/5.0'})
-    webpage = urlopen(req).read()
-    with open('temp.zip', 'wb') as f:
-        f.write(webpage)
+    local_path, headers = urlretrieve(address, 'temp.zip')
+    print('local_path', local_path)
     print('Zip file downloaded.')
     #Extract files into new dir, move up and delete the default zip name
     extracted_dir = outdir

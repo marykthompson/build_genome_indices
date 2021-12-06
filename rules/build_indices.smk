@@ -1,7 +1,7 @@
 rule build_star_index:
     input:
-        fasta = 'indices/combo_files/{}.fa'.format(config['index_name']),
-        gtf = 'indices/combo_files/{}.gtf'.format(config['index_name'])
+        fasta = 'sequences/combo_files/{}.fa'.format(config['index_name']),
+        gtf = 'sequences/combo_files/{}.gtf'.format(config['index_name'])
     output:
         outdir = directory('indices/star_index_{index_name}'.format(index_name = config['index_name']))
     params:
@@ -20,8 +20,8 @@ rule build_star_index:
 
 rule build_kallisto_index:
     input:
-        fasta = 'indices/combo_files/{}.fa'.format(config['index_name']),
-        gtf = 'indices/combo_files/{}.gtf'.format(config['index_name'])
+        fasta = 'sequences/combo_files/{}.fa'.format(config['index_name']),
+        gtf = 'sequences/combo_files/{}.gtf'.format(config['index_name'])
     output:
         index = 'indices/kallisto_index/{}.idx'.format(config['index_name']),
         t2g = 'indices/{}_t2g.txt'.format(config['index_name']),
@@ -37,5 +37,5 @@ rule build_kallisto_index:
         '''
         kb ref -i {output.index} -g {output.t2g} -f1 {output.cdna_fasta} \
         -f2 {output.intron_fasta} -c1 {output.cdna_t2c} -c2 {output.intron_t2c} \
-        --lamanno {input.fasta} {input.gtf}
+        --workflow lamanno {input.fasta} {input.gtf}
         '''

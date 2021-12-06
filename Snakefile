@@ -14,7 +14,9 @@ configfile: 'config.yaml'
 rule all:
     input:
         #'indices/star_index_{index_name}'.format(index_name = config['index_name']),
-        'indices/kallisto_index/{index_name}.idx'.format(index_name = config['index_name'])
+        'indices/kallisto_index/{index_name}.idx'.format(index_name = config['index_name']),
+        'sequences/combo_files/{index_name}.db'.format(index_name = config['index_name'])
+
 
 ##### setup report #####
 report: 'report/workflow.rst'
