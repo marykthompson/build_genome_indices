@@ -56,6 +56,9 @@ rule create_gffutils_db:
         gffutils_db = 'sequences/combo_files/{}.db'.format(config['index_name']),
         rrna_gene_file = 'sequences/rrna/rrna_genes.csv',
         rrna_gene_file_nopg = 'sequences/rrna/rrna_genes_nopg.csv',
+        len_by_gene_med = 'sequences/combo_files/len_by_gene_med.csv',
+        len_by_gene_mean = 'sequences/combo_files/len_by_gene_mean.csv',
+        len_by_txt = 'sequences/combo_files/len_by_txt.csv'
     conda:
         '../envs/main.yaml'
     script:
